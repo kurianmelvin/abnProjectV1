@@ -11,6 +11,7 @@ import dynamic from "next/dynamic";
 import { TextureLoader, BackSide } from "three";
 
 import useStore from "@/helpers/store";
+
 //dynamic imports client side loading
 // const Profile = dynamic(
 //   () => import("@/components/canvas/Profile"),

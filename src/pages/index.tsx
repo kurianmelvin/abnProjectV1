@@ -18,6 +18,7 @@ import useStore from "@/helpers/store";
 // const Home = dynamic(() => import("@/components/canvas/Home"), {
 //   ssr: false,
 // });
+const TestingApi = dynamic(() => import("@/components/dom/TestingApi"));
 const Home = dynamic(() => import("@/components/canvas/Home"));
 const RecipeListApi = dynamic(
   () => import("@/components/service/RecipeListApi")
@@ -27,7 +28,8 @@ const RecipeListApi = dynamic(
 const DOM = () => {
   return (
     <>
-      <RecipeListApi />
+      <TestingApi />
+      {/* <RecipeListApi /> */}
     </>
   );
 };
@@ -47,6 +49,7 @@ const R3F = () => {
       {/* <ambientLight intensity={1} /> */}
       {/* <Shader onClick={handleOnClick} /> */}
       {/* <Home /> */}
+      {/* <RecipeListApi /> */}
     </>
   );
 };

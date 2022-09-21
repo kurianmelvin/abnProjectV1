@@ -17,22 +17,11 @@ function TestingApi() {
           )
         ).json();
         console.log("data from recipeData", recipeData);
-        // if (recipeData.meals == null) {
-        //   console.log("recipeData.meals", recipeData.meals);
-        //   // recipeData = emptyObject;
-        //   // console.log("recipeData.meals empty object", recipeData.meals);
-        //   setRecipeData("we dont have it");
-        // } else {
-        //   setRecipeData(recipeData.meals.map((pd: any) => pd.strMeal));
-        // }
+
         setRecipeData(
           recipeDataApi.meals.map((recData: any) => recData.strMeal)
         );
-        // setRecipeData(
-        //   recipeData.meals.map((recData: any) => recData.strInstructions)
-        // );
-        // console.log("recipeData.meals", recipeData.meals);
-        // console.log("data from recipeData before setRecipeData", recipeData);
+        console.log("data from recipeData", recipeData);
       } catch (error) {
         // Error 😨
         if (error.response) {
@@ -57,6 +46,7 @@ function TestingApi() {
         console.log(error);
       }
     };
+    console.log("the first const data", recipeFromAPI);
     recipeFromAPI();
     // console.log("the data inside Recipe Data", recipeData);
   }, [query]);

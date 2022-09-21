@@ -155,7 +155,7 @@ const Item = ({ item, index }) => {
 function HomeDom() {
   return (
     <>
-      <p>main page</p>
+      {/* <p>main page</p> */}
 
       <Main>
         <InfiniteSlider items={items} width={600} visible={3}>

@@ -18,7 +18,7 @@ import useStore from "@/helpers/store";
 // const Home = dynamic(() => import("@/components/canvas/Home"), {
 //   ssr: false,
 // });
-// const TestingApi = dynamic(() => import("@/components/dom/TestingApi"));
+const TestingApi = dynamic(() => import("@/components/dom/TestingApi"));
 const Home = dynamic(() => import("@/components/canvas/Home"));
 const RecipeListApi = dynamic(
   () => import("@/components/service/RecipeListApi")
@@ -32,9 +32,9 @@ const HomeDom = dynamic(() => import("@/components/dom/HomeDom"));
 const DOM = () => {
   return (
     <>
-      {/* <TestingApi /> */}
+      <TestingApi />
       {/* <RecipeListApi /> */}
-      <HomeDom />
+      {/* <HomeDom /> */}
     </>
   );
 };

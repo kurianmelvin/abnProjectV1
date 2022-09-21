@@ -1,166 +1,95 @@
-// //@ts-nocheck
-// import React, { useState, useEffect } from "react";
-// import { getRecipe } from "@/helpers/store";
+//@ts-nocheck
+import React, { useState, useEffect } from "react";
+import { getRecipe } from "@/helpers/store";
 
-// //
+/* prettier-ignore */
+function TestingApi() {
+  const recipeName = getRecipe((state) => state.recipeName);
+  const recipeInstructions = getRecipe((state) => state.recipeInstructions);
+  const recipeImage = getRecipe((state) => state.recipeImage);
+  const recipeIngredient = getRecipe((state) => state.recipeIngredient);
+  const recipeMeasure = getRecipe((state) => state.recipeMeasure);
+  const recipeYoutube = getRecipe((state) => state.recipeYoutube);
 
-// function TestingApi() {
-//   const recipeData = getRecipe((state) => state.recipeData);
-//   const setRecipeData = getRecipe((state) => state.setRecipeData);
-//   const [query, setQuery] = useState("Breakfast");
-//   useEffect(() => {
-//     const recipeFromAPI = async () => {
-//       try {
-//         const recipeDataApi = await (
-//           await fetch(
-//             "https://www.themealdb.com/api/json/v1/1/search.php?s=" + query
-//           )
-//         ).json();
-//         console.log("data from recipeData", recipeData);
+  const setRecipeName = getRecipe((state) => state.setRecipeName);
+  const setRecipeInstructions = getRecipe((state) => state.setRecipeInstructions);
+  const setRecipeImage = getRecipe((state) => state.setRecipeImage);
+  const setRecipeIngredient = getRecipe((state) => state.setRecipeIngredient);
+  const setRecipeMeasure = getRecipe((state) => state.setRecipeMeasure);
+  const setRecipeYoutube = getRecipe((state) => state.setRecipeYoutube);
+  const [query, setQuery] = useState("Breakfast");
+  useEffect(() => {
+    const recipeFromAPI = async () => {
+      try {
+        const recipeDataApi = await (
+          await fetch(
+            "https://www.themealdb.com/api/json/v1/1/search.php?s=" + query
+          )
+        ).json();
 
-//         setRecipeData(
-//           recipeDataApi.meals.map((recData: any) => recData.strMeal)
-//         );
-//         console.log("data from recipeData", recipeData);
-//       } catch (error) {
-//         // Error 😨
-//         if (error.response) {
-//           /*
-//            * The request was made and the server responded with a
-//            * status code that falls out of the range of 2xx
-//            */
-//           console.log(error.response.data);
-//           console.log(error.response.status);
-//           console.log(error.response.headers);
-//         } else if (error.request) {
-//           /*
-//            * The request was made but no response was received, `error.request`
-//            * is an instance of XMLHttpRequest in the browser and an instance
-//            * of http.ClientRequest in Node.js
-//            */
-//           console.log(error.request);
-//         } else {
-//           // Something happened in setting up the request and triggered an Error
-//           console.log("Error", error.message);
-//         }
-//         console.log(error);
-//       }
-//     };
-//     console.log("the first const data", recipeFromAPI);
-//     recipeFromAPI();
-//     // console.log("the data inside Recipe Data", recipeData);
-//   }, [query]);
-//   return (
-//     <>
-//       <div>
-//         <input value={query} onChange={(e) => setQuery(e.target.value)} />
-//         <h1>Food Names</h1>
-//         <ul>
-//           {recipeData.map((strMeal: any) => (
-//             <li key={strMeal}>
-//               <p>Food Name: {strMeal}</p>
-//             </li>
-//           ))}
-//         </ul>
-//         <p>new</p>
-//         <ul>
-//           {recipeData.map((idMeal: any) => (
-//             <li key={idMeal}>
-//               <p>Food Name: {idMeal}</p>
-//             </li>
-//           ))}
-//         </ul>
-//       </div>
-//     </>
-//   );
-// }
-// // console.log(data);
 
-// // useEffect(() => {
-// //   const recipeFromAPI = async () => {
-// //     const recipeData = await (
-// //       await fetch(
-// //         "https://www.themealdb.com/api/json/v1/1/search.php?s=Breakfast"
-// //       )
-// //     ).json();
-// //     console.log(recipeData);
-// //     setRecipeData(recipeData);
-// //   };
+        setRecipeName(recipeDataApi.meals.map((recData: any) => recData.strMeal));
+        setRecipeInstructions(recipeDataApi.meals.map((recData: any) => recData.strInstructions));
+        setRecipeImage(recipeDataApi.meals.map((recData: any) => recData.strMealThumb));
+        setRecipeIngredient(recipeDataApi.meals.map((recData: any) => recData.strIngredient1));
+        setRecipeMeasure(recipeDataApi.meals.map((recData: any) => recData.strMeasure1));
+        setRecipeYoutube(recipeDataApi.meals.map((recData: any) => recData.strYoutube));
+        
 
-// //   recipeFromAPI();
-// // }, []);
+      } catch (error) {
+        // Error 😨
+        if (error.response) {
+          /*
+           * The request was made and the server responded with a
+           * status code that falls out of the range of 2xx
+           */
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          /*
+           * The request was made but no response was received, `error.request`
+           * is an instance of XMLHttpRequest in the browser and an instance
+           * of http.ClientRequest in Node.js
+           */
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request and triggered an Error
+          console.log("Error", error.message);
+        }
+        console.log(error);
+      }
+    };
+    
+    recipeFromAPI();
+    
+  }, [query]);
+  
+    console.log("$$$$$$$$$$$$$Namea", recipeName);
+    console.log("######Instructions", recipeInstructions);
+  return (
+    <>
+      <div>
+        <input value={query} onChange={(e) => setQuery(e.target.value)} />
+        <h1>Food Names</h1>
+        <ul>
+          {recipeName.map((strMeal: any) => (
+            <li key={strMeal}>
+              <p>Food Name: {strMeal}</p>
+            </li>
+          ))}
+        </ul>
+        <p>new</p>
+        <ul>
+          {recipeInstructions.map((strInstructions: any) => (
+            <li key={strInstructions}>
+              <p>Instructions: {strInstructions}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
+  );
+}
 
-// //   return (
-// //     <>
-// //       <ul>
-// //         {recipeData.meals.map((item) => (
-// //           <li key={item.objectID}>
-// //             <p>Meal Name {" " + item.strMeal}</p>
-
-// //             {/* <a href={item.url}>{item.strInstructions}</a> */}
-// //           </li>
-// //         ))}
-// //       </ul>
-// //     </>
-// //   );
-// // }
-
-// export default TestingApi;
-
-// //   return (
-// //     <>
-// //       <ul>
-// //         {data.meals.map((item) => (
-// //           <li key={item.objectID}>
-// //             <p>Meal Name {" " + item.strMeal}</p>
-
-// //             {/* <a href={item.url}>{item.strInstructions}</a> */}
-// //           </li>
-// //         ))}
-// //       </ul>
-// //     </>
-// //   );
-// // }
-
-// // export default TestingApi;
-
-// // return (
-// //   <>
-// //     <div>
-// //       <input value={query} onChange={(e) => setQuery(e.target.value)} />
-// //       <h1>Food Names</h1>
-// //       <ul>
-// //         {recipeData.meals == null ? (
-// //           <p>
-// //             Sorry, We don't Have that Recipe. Please try another Food or enter
-// //             a valid Input
-// //           </p>
-// //         ) : (
-// //           recipeData.map((strMeal: any) => (
-// //             <li key={strMeal}>
-// //               <p>Food Name: {strMeal}</p>
-// //             </li>
-// //           ))
-// //         )}
-// //       </ul>
-// //     </div>
-// //   </>
-// // );
-// // }
-
-// // return (
-// //   <>
-// //     <div>
-// //       <input value={query} onChange={(e) => setQuery(e.target.value)} />
-// //       <h1>Food Names</h1>
-// //       <ul>
-// //         {recipeData.map((strMeal: any) => (
-// //           <li key={strMeal}>
-// //             <p>Food Name: {strMeal}</p>
-// //           </li>
-// //         ))}
-// //       </ul>
-// //     </div>
-// //   </>
-// // );
-// // }
+export default TestingApi;

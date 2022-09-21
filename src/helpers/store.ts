@@ -40,41 +40,19 @@ export const useStore = create<AppState>()(
 );
 
 export const getRecipe = create((set) => ({
-  recipeData: [],
-  setRecipeData: (meals: any) => set({ recipeData: meals }),
+  recipeName: [],
+  recipeInstructions: [],
+  recipeImage: [],
+  recipeIngredient: [],
+  recipeMeasure: [],
+  recipeYoutube: [],
+
+  setRecipeName: (meals: any) => set({ recipeName: meals }),
+  setRecipeInstructions: (meals: any) => set({ recipeInstructions: meals }),
+  setRecipeImage: (meals: any) => set({ recipeImage: meals }),
+  setRecipeIngredient: (meals: any) => set({ recipeIngredient: meals }),
+  setRecipeMeasure: (meals: any) => set({ recipeMeasure: meals }),
+  setRecipeYoutube: (meals: any) => set({ recipeYoutube: meals }),
 }));
 
 export default useStore;
-
-// export const getRecipe = create((set) => ({
-//   data: [],
-//   loading: false,
-//   hasErrors: false,
-//   fetch: async () => {
-//     set(() => ({ loading: true }));
-//     try {
-//       const response = await axios.get(
-//         "https://www.themealdb.com/api/json/v1/1/search.php?s=Breakfast"
-//       );
-//       set((state) => ({ data: (state.data = response.data), loading: false }));
-//     } catch (err) {
-//       set(() => ({ hasErrors: true, loading: false }));
-//     }
-//   },
-// }));
-// export const getRecipe = create((set) => ({
-//   data: { meals: [] },
-//   query: "Breakfast",
-
-//   getMoreData: async () => {
-//     const response = await axios.get(
-//       "https://www.themealdb.com/api/json/v1/1/search.php?s=Breakfast"
-//     );
-
-//     set((state) => ({ data: response.data }));
-//   },
-// }));
-// export const getRecipe = create((set) => ({
-//   recipeData: [],
-//   setRecipeData: (meals: any) => set({ ...meals }),
-// }));

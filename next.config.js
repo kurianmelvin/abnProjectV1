@@ -18,7 +18,9 @@ const nextConfig = {
 
     return config;
   },
-
+  compiler: {
+    styledComponents: true,
+  },
   // Internationalized Routing
   // @see: https://nextjs.org/docs/advanced-features/i18n-routing
   i18n: {

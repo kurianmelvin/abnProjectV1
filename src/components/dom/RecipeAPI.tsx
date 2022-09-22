@@ -3,20 +3,29 @@ import React, { useState, useEffect } from "react";
 import { useRecipeStore } from "@/helpers/store";
 
 function RecipeAPI() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const books = useRecipeStore((state) => state.books);
-  const fetchBooks = useRecipeStore((state) => state.fetchBooks);
+  // const [searchTerm, setSearchTerm] = useState("Breakfast");
+  const recipeData = useRecipeStore((state) => state.recipeData);
+  const fetchRecipeData = useRecipeStore((state) => state.fetchRecipeData);
+  const [query, setQuery] = useState("Breakfast");
+  useEffect(() => {
+    try {
+      fetchRecipeData(query);
+    } catch (error) {
+      console.log(error);
+    }
+  }, [query]);
 
+  // console.log(recipeData);
   return (
     <section>
-      <form
+      {/* <form
         onSubmit={(event) => {
           event.preventDefault();
-          fetchBooks(searchTerm);
+          fetchRecipeData(searchTerm);
         }}
       >
         <label>
-          Search for books
+          Search for Recipe
           <input
             type="search"
             placeholder="search for book"
@@ -27,19 +36,20 @@ function RecipeAPI() {
           />
         </label>
         <button type="submit">Search</button>
-      </form>
+      </form> */}
+      <input value={query} onChange={(e) => setQuery(e.target.value)} />
 
       <ul>
-        {books.items.map((book) => {
+        {recipeData.meals.map((item) => {
           return (
-            <li key={book.id}>
-              <img
-                alt={`${book.volumeInfo.title} book`}
-                src={`http://books.google.com/books/content?id=${book.id}&printsec=frontcover&img=1&zoom=1&source=gbs_api`}
-              />
+            <li key={item.idMeal}>
               <div>
-                <p>{book.volumeInfo.title}</p>
-                <p>{book.volumeInfo.authors}</p>
+                <p>{item.strMeal}</p>
+                <img
+                  alt={`${item.strMealThumb} Food`}
+                  src={`${item.strMealThumb}`}
+                />
+                <p>{item.strInstructions}</p>
               </div>
 
               <hr />

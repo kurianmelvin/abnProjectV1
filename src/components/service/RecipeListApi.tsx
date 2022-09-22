@@ -22,7 +22,7 @@ function SearchResults() {
             console.log(response);
           });
       } catch (error) {
-        // Error 😨
+        // Error
         if (error.response) {
           /*
            * The request was made and the server responded with a

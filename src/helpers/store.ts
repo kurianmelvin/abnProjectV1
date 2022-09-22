@@ -39,32 +39,32 @@ export const useStore = create<AppState>()(
   )
 );
 
-export const getRecipe = create((set) => ({
-  recipeName: [],
-  recipeInstructions: [],
-  recipeImage: [],
-  recipeIngredient: [],
-  recipeMeasure: [],
-  recipeYoutube: [],
+// export const getRecipe = create((set) => ({
+//   recipeName: [],
+//   recipeInstructions: [],
+//   recipeImage: [],
+//   recipeIngredient: [],
+//   recipeMeasure: [],
+//   recipeYoutube: [],
 
-  setRecipeName: (meals: any) => set({ recipeName: meals }),
-  setRecipeInstructions: (meals: any) => set({ recipeInstructions: meals }),
-  setRecipeImage: (meals: any) => set({ recipeImage: meals }),
-  setRecipeIngredient: (meals: any) => set({ recipeIngredient: meals }),
-  setRecipeMeasure: (meals: any) => set({ recipeMeasure: meals }),
-  setRecipeYoutube: (meals: any) => set({ recipeYoutube: meals }),
-}));
+//   setRecipeName: (meals: any) => set({ recipeName: meals }),
+//   setRecipeInstructions: (meals: any) => set({ recipeInstructions: meals }),
+//   setRecipeImage: (meals: any) => set({ recipeImage: meals }),
+//   setRecipeIngredient: (meals: any) => set({ recipeIngredient: meals }),
+//   setRecipeMeasure: (meals: any) => set({ recipeMeasure: meals }),
+//   setRecipeYoutube: (meals: any) => set({ recipeYoutube: meals }),
+// }));
 
 //--------
 
 export const useRecipeStore = create((set) => {
   return {
-    books: { items: [] },
-    fetchBooks: async (searchTerm) => {
+    recipeData: { meals: [] },
+    fetchRecipeData: async (searchTerm) => {
       const result = await axios.get(
-        `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`
+        `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`
       );
-      set({ books: result.data });
+      set({ recipeData: result.data });
     },
   };
 });

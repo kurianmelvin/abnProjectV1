@@ -55,4 +55,18 @@ export const getRecipe = create((set) => ({
   setRecipeYoutube: (meals: any) => set({ recipeYoutube: meals }),
 }));
 
+//--------
+
+export const useRecipeStore = create((set) => {
+  return {
+    books: { items: [] },
+    fetchBooks: async (searchTerm) => {
+      const result = await axios.get(
+        `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`
+      );
+      set({ books: result.data });
+    },
+  };
+});
+
 export default useStore;

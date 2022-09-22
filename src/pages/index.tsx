@@ -28,11 +28,14 @@ const ResApi = dynamic(() => import("@/components/canvas/ResApi"));
 
 const HomeDom = dynamic(() => import("@/components/dom/HomeDom"));
 
+const RecipeAPI = dynamic(() => import("@/components/dom/RecipeAPI"));
+
 // DOM elements here
 const DOM = () => {
   return (
     <>
-      <TestingApi />
+      <RecipeAPI />
+      {/* <TestingApi /> */}
       {/* <RecipeListApi /> */}
       {/* <HomeDom /> */}
     </>

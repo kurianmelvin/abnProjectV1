@@ -17,15 +17,25 @@ function RecipeAPI() {
 
   // console.log(recipeData);
   return (
-    <section>
+    <>
+      <div>
+        <input
+          type="search"
+          placeholder="Search for Recipes"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+      </div>
+      {/* <section> */}
       {/* <form
         onSubmit={(event) => {
           event.preventDefault();
-          fetchRecipeData(searchTerm);
+          fetchRecipeData(query);
         }}
       >
         <label>
           Search for Recipe
+          <input value={query} onChange={(e) => setQuery(e.target.value)} />
           <input
             type="search"
             placeholder="search for book"
@@ -37,27 +47,32 @@ function RecipeAPI() {
         </label>
         <button type="submit">Search</button>
       </form> */}
-      <input value={query} onChange={(e) => setQuery(e.target.value)} />
+      {/* <input
+          type="search"
+          placeholder="Search for Recipes"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        /> */}
+      {/* <ul>
+          {recipeData.meals.map((item) => {
+            return (
+              <li key={item.idMeal}>
+                <div>
+                  <p>{item.strMeal}</p>
+                  <img
+                    alt={`${item.strMealThumb} Food`}
+                    src={`${item.strMealThumb}`}
+                  />
+                  <p>{item.strInstructions}</p>
+                </div>
 
-      <ul>
-        {recipeData.meals.map((item) => {
-          return (
-            <li key={item.idMeal}>
-              <div>
-                <p>{item.strMeal}</p>
-                <img
-                  alt={`${item.strMealThumb} Food`}
-                  src={`${item.strMealThumb}`}
-                />
-                <p>{item.strInstructions}</p>
-              </div>
-
-              <hr />
-            </li>
-          );
-        })}
-      </ul>
-    </section>
+                <hr />
+              </li>
+            );
+          })}
+        </ul> */}
+      {/* </section> */}
+    </>
   );
 }
 

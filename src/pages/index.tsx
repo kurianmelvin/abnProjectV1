@@ -28,7 +28,7 @@ const ResApi = dynamic(() => import("@/components/canvas/ResApi"));
 
 const HomeDom = dynamic(() => import("@/components/dom/HomeDom"));
 
-const RecipeAPI = dynamic(() => import("@/components/dom/RecipeAPI"));
+const RecipeAPI = dynamic(() => import("@/helpers/RecipeAPI"));
 
 // DOM elements here
 const DOM = () => {
@@ -37,7 +37,7 @@ const DOM = () => {
       <RecipeAPI />
       {/* <TestingApi /> */}
       {/* <RecipeListApi /> */}
-      {/* <HomeDom /> */}
+      <HomeDom />
     </>
   );
 };

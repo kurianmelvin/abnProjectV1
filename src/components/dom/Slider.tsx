@@ -6,9 +6,10 @@ import { useSprings, a } from "@react-spring/web";
 
 //end of imports
 // -------------
+/*prettier-ignore */
 const styles = {
-  container: { position: "relative", height: "100vh", width: "100vw" },
-  item: { position: "absolute", height: "100vh", willChange: "transform" },
+  container: { position: "relative", height: "100vh", width: "100vw", touchAction: "none"},
+  item: { position: "absolute", height: "50vh",  width: "50vw", willChange: "transform" },
 };
 
 /**
@@ -20,7 +21,7 @@ const styles = {
  * @param {number} visible - number of items that muste be visible on screen
  */
 /* prettier-ignore */
-export default function Slider({items,width = 600,visible = 4, style, children}) {
+export default function Slider({items,width = 500,visible = 4, style, children}) {
   const idx = useCallback((x, l = items.length) => (x < 0 ? x + l : x) % l, [items])
   const getPos = useCallback((i, firstVis, firstVisIdx) => idx(i - firstVis + firstVisIdx), [idx])
   const [springs, api] = useSprings(items.length, i => ({ x: (i < items.length - 1 ? i : -1) * width }))
@@ -53,7 +54,7 @@ export default function Slider({items,width = 600,visible = 4, style, children})
   useGesture(
     {
       onDrag: ({ event, offset: [x], direction: [dx] }) => {
-        event.preventDefault()
+        // event.preventDefault()
         if (dx) {
           dragOffset.current = -x
           runSprings(wheelOffset.current + -x, -dx)

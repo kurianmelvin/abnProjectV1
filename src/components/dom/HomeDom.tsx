@@ -3,49 +3,47 @@ import React, { useState, useMemo, useEffect } from "react";
 import styled from "styled-components";
 import { useSpring, useTrail, a } from "@react-spring/web";
 import InfiniteSlider from "./Slider";
-// import items from "./items";
-// import "./styles.css";
 import { useRecipeStore } from "@/helpers/store";
-import { ConfigResolverMap } from "@use-gesture/react";
+// import { ConfigResolverMap } from "@use-gesture/react";
 
 // const recipeData = useRecipeStore((state) => state.recipeData);
 
-const recipeItemsArray = [
-  {
-    css: "https://www.themealdb.com/images/ingredients/Lime.png",
-    height: 150,
-  },
-  {
-    css: "https://www.themealdb.com/images/media/meals/1550441882.jpg",
-    height: 300,
-  },
-  {
-    css: "https://www.themealdb.com/images/media/meals/1543774956.jpg",
-    height: 300,
-  },
-  {
-    css: "https://www.themealdb.com/images/media/meals/1550441882.jpg",
-    height: 300,
-  },
-  {
-    css: "https://www.themealdb.com/images/ingredients/Lime.png",
-    height: 300,
-  },
-  {
-    css: "https://www.themealdb.com/images/media/meals/mlchx21564916997.jpg",
-    height: 300,
-  },
-  {
-    css: "https://www.themealdb.com/images/ingredients/Lime.png",
-    height: 200,
-  },
-  {
-    css: "https://www.themealdb.com/images/media/meals/58oia61564916529.jpg",
-    height: 300,
-  },
-];
+// const recipeItemsArray = [
+//   {
+//     css: "https://www.themealdb.com/images/ingredients/Lime.png",
+//     height: 150,
+//   },
+//   {
+//     css: "https://www.themealdb.com/images/media/meals/1550441882.jpg",
+//     height: 300,
+//   },
+//   {
+//     css: "https://www.themealdb.com/images/media/meals/1543774956.jpg",
+//     height: 300,
+//   },
+//   {
+//     css: "https://www.themealdb.com/images/media/meals/1550441882.jpg",
+//     height: 300,
+//   },
+//   {
+//     css: "https://www.themealdb.com/images/ingredients/Lime.png",
+//     height: 300,
+//   },
+//   {
+//     css: "https://www.themealdb.com/images/media/meals/mlchx21564916997.jpg",
+//     height: 300,
+//   },
+//   {
+//     css: "https://www.themealdb.com/images/ingredients/Lime.png",
+//     height: 200,
+//   },
+//   {
+//     css: "https://www.themealdb.com/images/media/meals/58oia61564916529.jpg",
+//     height: 300,
+//   },
+// ];
 
-console.log("this is the recipeItemsArray", recipeItemsArray);
+// console.log("this is the recipeItemsArray", recipeItemsArray);
 
 const Main = styled.div`
   height: 100vh;
@@ -147,34 +145,27 @@ const Cover = styled(a.div)`
 // -----------
 /* prettier-ignore */
 const ImageItem = ({ item, index }) => {
-  const recipeData = useRecipeStore((state) => state.recipeData);
-  const recipeFoodName = [recipeData.meals.map((meals: any) => meals.strMeal)].toString(); 
-  //  console.log("this is the RecipeFoodImage$$$", recipeFoodImage);
-// console.log(recipeFoodName)
-
-
-// console.log(recipeFoodName.toString())
-
-// console.log(recipeFoodName[0].toString())
-
+  // const recipeData = useRecipeStore((state) => state.recipeData);
   const [hovered, setHover] = useState(false);
   const { opacity, scale } = useSpring({opacity: hovered ? 0.4 : 0,scale: hovered ? 0.95 : 1});
   const transform = scale.to((s) => `scale(${s})`);
   return (
     <Content>
-      <Marker>{String(index).padStart(2, "0")}</Marker>
+      {/* <Marker>{String(index).padStart(2, "0")}</Marker> */}
       <Image
         // style={{ transform, backgroundImage: `url(${item})`}}
         style={{ transform, backgroundImage: `url(${item.strMealThumb})` }}
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       >
-        <Cover style={{ opacity }} />
+        <Cover style={{ opacity }} /> 
+        {/* <p>{item.strInstructions}</p> */}
       </Image>
 
-      {/* urls: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 5, 7, 8, 2, 4, 9, 6].map((u) => `/${u}.jpeg`) */}
+
 
       <Trail text={item.strMeal} visible={hovered} />
+     
     </Content>
   );
 };
@@ -191,9 +182,9 @@ const ImageItem = ({ item, index }) => {
 /* prettier-ignore */
 function HomeDom() {
   const recipeData = useRecipeStore((state) => state.recipeData);
-  const recipeFoodName = [recipeData.meals.map((meals: any) => meals.strMeal)].toString(); 
-  const recipeFoodImage = [recipeData.meals.map((meals: any) => meals.strMealThumb)].toString();
-   const imageLinks = useMemo(() => recipeFoodImage.split(","));
+  // const recipeFoodName = [recipeData.meals.map((meals: any) => meals.strMeal)].toString(); 
+  // const recipeFoodImage = [recipeData.meals.map((meals: any) => meals.strMealThumb)].toString();
+  //  const imageLinks = useMemo(() => recipeFoodImage.split(","));
    
 
   // for (let index = 0; index < recipeData.meals.length; index++) {
@@ -203,33 +194,14 @@ function HomeDom() {
   // const recipeFoodName = [recipeData.meals.map((meals: any) => meals.strMeal)]; 
   // const recipeFoodImage = [recipeData.meals.map((meals: any) => meals.strMealThumb)];
 // 
- 
-// console.log("This is the RecipeData from HomeDOM", recipeData)
+
 console.log("This is the RecipeData.meals from HomeDOM", recipeData.meals)
   
   return (
     <>
-      {/* <p>main page</p> */}
-      {/* <ul>
-        {recipeData.meals.map((item) => {
-          return (
-            <li key={item.idMeal}>
-              <div>
-                <p>{item.strMeal}</p>
-                <img
-                  alt={`${item.strMealThumb} Food`}
-                  src={`${item.strMealThumb}`}
-                />
-                <p>{item.strInstructions}</p>
-              </div>
-
-              <hr />
-            </li>
-          );
-        })}
-      </ul> */}
+    
       <Main>
-        <InfiniteSlider items={recipeData.meals} width={600} visible={3}>
+        <InfiniteSlider items={recipeData.meals} width={500} visible={4}>
         {/* <InfiniteSlider items={recipeItemsArray} width={600} visible={3}> */}
           {(item, index) => <ImageItem item={item} index={index} />}
 

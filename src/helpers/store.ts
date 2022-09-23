@@ -67,10 +67,18 @@ export const useRecipeStore = create((set) => {
     recipeYoutube: [],
     recipeData: { meals: [] },
     fetchRecipeData: async (searchTerm) => {
-      const result = await axios.get(
+
+      try {
+        const result = await axios.get(
         `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`
       );
-      set({ recipeData: result.data });
+      set({ recipeData: result.data});
+      } catch (error) {
+        console.log(error.data);
+        console.log(error.status);
+        console.log(error.headers);
+      }
+      
       
     },
   };

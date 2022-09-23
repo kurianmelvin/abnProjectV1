@@ -8,8 +8,8 @@ import { useSprings, a } from "@react-spring/web";
 // -------------
 /*prettier-ignore */
 const styles = {
-  container: { position: "relative", height: "100vh", width: "100vw", touchAction: "none"},
-  item: { position: "absolute",  height: "70%",  width: "50%", willChange: "transform" },
+  container: { position: "relative",  height: "100%", width: "100%", touchAction: "none"},
+  item: { position: "absolute",  height: "100%", willChange: "transform" },
 };
 
 /**
@@ -21,7 +21,7 @@ const styles = {
  * @param {number} visible - number of items that muste be visible on screen
  */
 /* prettier-ignore */
-export default function InfiniteSlider({items,width = 500,visible = 4, style, children}) {
+export default function InfiniteSlider({items,width = 600,visible = 4, style, children}) {
   const idx = useCallback((x, l = items.length) => (x < 0 ? x + l : x) % l, [items])
   const getPos = useCallback((i, firstVis, firstVisIdx) => idx(i - firstVis + firstVisIdx), [idx])
   const [springs, api] = useSprings(items.length, i => ({ x: (i < items.length - 1 ? i : -1) * width }))
@@ -82,3 +82,5 @@ export default function InfiniteSlider({items,width = 500,visible = 4, style, ch
     </>
   );
 }
+
+// const [springs, api] = useSprings((items.length == 0 ? (<p>sorry something went wrong</p>) : (items.length)), i => ({ x: (i < items.length - 1 ? i : -1) * width }))

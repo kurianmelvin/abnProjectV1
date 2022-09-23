@@ -4,20 +4,35 @@ import { useRecipeStore } from "@/helpers/store";
 import styled from "styled-components";
 /*prettier-ignore */
 
+const SearchHome = styled.div`
+// position: relative;
+// display: inline-block;
+width: 100%;
+// max-width: 980px;
+// margin: 30px;
+`
+
 const Input = styled.input`
+  height: 70px;
+  margin: 0;
   width: 100vw;
-   border: 1px solid #ccc;
-   margin: 8px 0;
- 
-  padding: 5px 45vw;
-  font-size: 2em;
+  border-radius: 45px;
+  padding-right: 85px;
+  background: #fff;
+  color: #cfcfcf;
+  border: none;
+  font-size: 1.8em;
+  font-weight: 300;
+  padding-left: 45vw;
+  // display: inline-block;
+  position: relative;
 `;
 
 function RecipeAPI() {
   // const [searchTerm, setSearchTerm] = useState("Breakfast");
 
   const fetchRecipeData = useRecipeStore((state) => state.fetchRecipeData);
-  const [query, setQuery] = useState("Breakfast");
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     try {
@@ -31,7 +46,7 @@ function RecipeAPI() {
   // console.log("this is  from RecipeAPI.MEALS ", recipeData.meals);
   return (
     <>
-      <div>
+      <SearchHome>
         {/* Search for Recipes */}
         <Input
           type="search"
@@ -39,15 +54,18 @@ function RecipeAPI() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        {/* <input
-          type="search"
-          placeholder="Search for Recipes"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        /> */}
-      </div>
+      </SearchHome>
     </>
   );
 }
 
 export default RecipeAPI;
+
+{
+  /* <input
+          type="search"
+          placeholder="Search for Recipes"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        /> */
+}

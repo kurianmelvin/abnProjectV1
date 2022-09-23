@@ -392,8 +392,53 @@ body,
   height: 100vh;
   margin: 0;
   padding: 0;
+  display: flex;
+  align-items: center;
+  /* background: #171720; */
+  background: #4f4f5a;
   /* overflow: hidden; */
+  /* overflow: hidden; */
+  /* overflow: hidden; */
+  overflow: auto;
 }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+    helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+  background: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+  cursor: url("https://github.com/chenglou/react-motion/raw/master/demos/demo8-draggable-list/cursor.png")
+      39 39,
+    auto;
+}
+
+.c {
+  position: absolute;
+  background-size: cover;
+  background-position: center center;
+  width: 50ch;
+  height: 50ch;
+  /* cursor: pointer; */
+  will-change: transform, opacity;
+}
+
+/* .front,
+.back {
+  background-size: cover;
+}
+
+.back {
+  background-image: url(https://images.unsplash.com/photo-1544511916-0148ccdeb877?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1901&q=80i&auto=format&fit=crop);
+}
+
+.front {
+  background-image: url(https://images.unsplash.com/photo-1540206395-68808572332f?ixlib=rb-1.2.1&w=1181&q=80&auto=format&fit=crop);
+} */
 
 /* @media only screen and (max-aspect-ratio: 8/7) {
   main {

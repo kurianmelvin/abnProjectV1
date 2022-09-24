@@ -394,10 +394,10 @@ body,
   padding: 0;
   display: flex;
   align-items: center;
-  /* background: #171720; */
-  background: #4f4f5a;
-  /* overflow: hidden; */
-  /* overflow: hidden; */
+  background: #171720;
+  /* background: #4f4f5a; */
+  /* overflow: visible; */
+  /* overflow: scroll; */
   /* overflow: hidden; */
   overflow: auto;
 }

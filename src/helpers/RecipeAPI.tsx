@@ -5,26 +5,24 @@ import styled from "styled-components";
 /*prettier-ignore */
 
 const SearchHome = styled.div`
-// position: relative;
-// display: inline-block;
+position: relative;
+display: inline-block;
 width: 100%;
-// max-width: 980px;
-// margin: 30px;
+padding-top:20px;
 `
 
 const Input = styled.input`
-  height: 70px;
+  height: 75px;
   margin: 0;
-  width: 100vw;
+  width: 99.195vw;
   border-radius: 45px;
   padding-right: 85px;
   background: #fff;
   color: #cfcfcf;
   border: none;
-  font-size: 1.8em;
+  font-size: xxx-large;
   font-weight: 300;
-  padding-left: 45vw;
-  // display: inline-block;
+  padding-left: 43vw;
   position: relative;
 `;
 
@@ -32,7 +30,8 @@ function RecipeAPI() {
   // const [searchTerm, setSearchTerm] = useState("Breakfast");
 
   const fetchRecipeData = useRecipeStore((state) => state.fetchRecipeData);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState("Arrabiata");
+  // const [query, setQuery] = useState("breakfast");
 
   useEffect(() => {
     try {

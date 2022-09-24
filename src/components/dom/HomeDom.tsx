@@ -35,6 +35,10 @@ const Para = styled.p`
   color: gold;
   font-size: smaller;
 `;
+const Li = styled.li`
+  color: gold;
+  font-size: smaller;
+`;
 
 const H1 = styled.h2`
   color: gold;
@@ -118,44 +122,46 @@ function Trail({ text, visible }) {
 // -----------------
 // --------------------------------------------------------------------------------------------------------------
 
-function TestAppObj() {
-  const employee = {
-    strIngredient: "akeyfoo",
-    strIngredient1: "akeyfoo",
-    strIngredient2: "akeysdfs",
-    strIngredient3: "akeydfdfs",
-    strIngredient4: "akeybsdfar",
-    fdsfe: "basdfsr",
-    algs: "bsdfar",
-    strMeasure1: "1 pound",
-    strMeasure2: "1/4 cup",
-    strMeasure3: "3 cloves",
-    strMeasure4: "1 tin ",
-    strMeasure5: "1/2 teaspoon",
-    strMeasure6: "1/2 teaspoon",
-    Address_Line1: "XXX",
-    Address_Line2: "YYY",
-    Name: "ZZZ",
-  };
+// function TestAppObj() {
+//   const employee = {
+//     strIngredient: "akeyfoo",
+//     strIngredient1: "akeyfoo",
+//     strIngredient2: "akeysdfs",
+//     strIngredient3: "akeydfdfs",
+//     strIngredient4: "akeybsdfar",
+//     fdsfe: "basdfsr",
+//     algs: "bsdfar",
+//     strMeasure1: "1 pound",
+//     strMeasure2: "1/4 cup",
+//     strMeasure3: "3 cloves",
+//     strMeasure4: "1 tin ",
+//     strMeasure5: "1/2 teaspoon",
+//     strMeasure6: "1/2 teaspoon",
+//     Address_Line1: "XXX",
+//     Address_Line2: "YYY",
+//     Name: "ZZZ",
+//   };
 
-  const empKeyText = Object.keys(employee).toString();
-  const matchIngredient = empKeyText.match(/strIngredient[\w-]/g);
-  const matchMeasure = empKeyText.match(/strMeasure[\w-]/g);
+//   // console.log("###EMPLOYEE OBJECT", employee);
 
-  console.log("matchMeasure", matchMeasure);
-  // console.log("employee[matchAddress]", employee[matchAddress[0]]);
+//   // const empKeyText = Object.keys(employee).toString();
+//   // const matchIngredient = empKeyText.match(/strIngredient[\w-]/g);
+//   // const matchMeasure = empKeyText.match(/strMeasure[\w-]/g);
 
-  for (let index = 0; index < matchIngredient.length; index++) {
-    console.log(employee[matchIngredient[index]]);
-  }
+//   // console.log("matchMeasure", matchMeasure);
+//   // // console.log("employee[matchAddress]", employee[matchAddress[0]]);
 
-  for (let index = 0; index < matchMeasure.length; index++) {
-    console.log(employee[matchMeasure[index]]);
-  }
-}
+//   // for (let index = 0; index < matchIngredient.length; index++) {
+//   //   console.log(employee[matchIngredient[index]]);
+//   // }
+
+//   // for (let index = 0; index < matchMeasure.length; index++) {
+//   //   console.log(employee[matchMeasure[index]]);
+//   // }
+// }
 // --------------------------------------------------------------------------------------------------------------
 
-const ImageItem = ({ item, index }) => {
+const ImageItem = ({ item, indexd }) => {
   // const [flipped, set] = useState(false);
   // const recipeData = useRecipeStore((state) => state.recipeData);
   const [hovered, setHover] = useState(false);
@@ -165,12 +171,191 @@ const ImageItem = ({ item, index }) => {
   });
   const [clicked, setClicked] = useState(false);
   const transform = scale.to((s) => `scale(${s})`);
+  let itemIng = new Object(item);
+
+  // const recipeKeyText = Object.keys(item).toString();
+  const recipeKeyText = Object.keys(itemIng).toString();
+
+  const matchIngredient = recipeKeyText.match(/strIngredient[\w-]/g);
+  // const matchIngredientValue =
+  const matchMeasure = recipeKeyText.match(/strMeasure[\w-]/g);
+  const itemsIdontWant = /\W+/g | /"   "/g | /  null/g;
+  const itemsIdontWant2 = null;
+
+  Object.keys(itemIng).map((key) =>
+    itemIng[key] == (/\W+/g | /"   "/g | /  null/g && itemIng[key] == undefined)
+      ? delete itemIng[key]
+      : itemIng[key]
+  );
+
+  let ingAsdf = [];
+  let meaAsdf = [];
+  // let allItems = new Object();
+  for (let index = 0; index < matchIngredient.length; index++) {
+    ingAsdf[index] = [itemIng[matchIngredient[index]]];
+  }
+
+  for (let indexj = 0; indexj < matchMeasure.length; indexj++) {
+    meaAsdf[indexj] = [itemIng[matchMeasure[indexj]]];
+  }
+
+  var armixed = ingAsdf.map(function (x, i) {
+    return [x, meaAsdf[i]];
+  });
+  console.log(armixed);
+  // const combineArrays = (first, second) => {
+  //   return first.reduce((acc, val, ind) => {
+  //     acc[val] = second[ind];
+  //     return acc;
+  //   }, {});
+  // };
+  // console.log(combineArrays(ingAsdf, meaAsdf));
+  // for (let i = 0; i < ingAsdf; i++) {
+  //   allItems[i] = ingAsdf[i];
+
+  //   for (let j = 0; j < meaAsdf; j++) {
+  //     allItems[i][j] = meaAsdf[j];
+  //   }
+  // }
+
+  // console.log("Ingredient", ingAsdf);
+  // console.log("measurements", meaAsdf);
+
+  // console.log(allItems);
+  // for (let indexj = 0; indexj < matchMeasure.length; indexj++) {
+  //   asdf.push([]);
+  // }
+  // console.log("asdf", asdf);
+  // const nameList = itemIng.map((name) => <li>{name}</li>);
+  // console.log("item");
+
+  // console.log("itemING", recipeKeyText);
+  // console.log("111111111111111111111111111111111111");
+
+  // for (const [key, value] of Object.entries(itemIng)) {
+  //   if (value != (/\W+/g | /"   "/g | /  null/g) && value !== null) {
+  //     delete itemIng.itemsIdontWant;
+  //     // console.log("itemIMG inside if ", itemIng);
+  //     // console.log(`${key}: ${value}`);
+  //   }
+  // }
+  // console.log("$$$", item);
+  // console.log("2222222", itemIng);
+
+  // [matchIngredient]
+  // console.log(item);
+
+  // if (itemIng) {
+  //   console.log(itemIng);
+  // for (let indx = 0; indx < itemIng.length; indx++) {
+  //   console.log("item[indx]", itemIng[indx]);
+  // }
+  // }
+
+  // for (let index = 0; index < matchIngredient.length; index++) {
+  //   itemIng.push(item[matchIngredient[index]]);
+  //   // console.log("item[matchIngredient[index]]", item[matchIngredient[index]]);
+  //   // console.log("item[matchIngredient[index]]", item[matchIngredient[index]]);
+  // }
+  // console.log("itemIng", itemIng);
+
+  // console.log("@@@ImageItem", item);
 
   return (
     <>
       <Content onClick={() => setClicked((state) => !state)}>
-        <div>
-          {clicked ? (
+        {/* <Para>{`${ingAsdf} : ${meaAsdf}`}</Para> */}
+        {/* <Para>{combineArrays}</Para> */}
+        {/* <Li>{`${armixed}`}</Li> */}
+
+        {clicked ? (
+          <>
+            <H1>Ingredients and Measurements</H1>
+          </>
+        ) : null}
+
+        {clicked
+          ? armixed.map((combineItem, index) => (
+              <dev key={(combineItem, index - 1)}>
+                <Li>{` ${combineItem}`}</Li>
+              </dev>
+            ))
+          : null}
+
+        {/* 00000000 */}
+        {clicked ? (
+          <>
+            <H1>Instructions</H1>
+            <Para>{itemIng.strInstructions}</Para>
+          </>
+        ) : null}
+        <Image
+          // style={{ transform, backgroundImage: `url(${item})`}}
+          style={{ transform, backgroundImage: `url(${itemIng.strMealThumb})` }}
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+        >
+          <Cover style={{ opacity }} />
+        </Image>
+        <Trail text={itemIng.strMeal} visible={hovered} />
+      </Content>
+    </>
+  );
+};
+
+// ----------------------------------------------------
+
+//
+//
+//
+//
+// ##########
+
+// const [query, setQuery] = useState([]);
+function HomeDom() {
+  const recipeData = useRecipeStore((state) => state.recipeData);
+
+  if (recipeData.meals === null) {
+    recipeData.meals = [
+      {
+        strMeal: "Sorry, We don't have the Recipe.",
+        strMealThumb: "https://i.ytimg.com/vi/u8_ICkj9l9M/maxresdefault.jpg",
+      },
+      {
+        strMeal: "Sorry, We don't have the Recipe.",
+        strMealThumb: "https://i.ytimg.com/vi/u8_ICkj9l9M/maxresdefault.jpg",
+      },
+      {
+        strMeal: "Sorry, We don't have the Recipe.",
+        strMealThumb: "https://i.ytimg.com/vi/u8_ICkj9l9M/maxresdefault.jpg",
+      },
+      {
+        strMeal: "Sorry, We don't have the Recipe.",
+        strMealThumb: "https://i.ytimg.com/vi/u8_ICkj9l9M/maxresdefault.jpg",
+      },
+    ];
+    console.log("@@@the object is empty", recipeData.meals);
+  }
+
+  console.log("This is the RecipeData.meals from HomeDOM", recipeData.meals);
+
+  return (
+    <>
+      <Main>
+        <InfiniteSlider items={recipeData.meals} width={700} visible={4}>
+          {(item, index) => <ImageItem item={item} index={index} />}
+        </InfiniteSlider>
+        {/* <Card/> */}
+        {/* <TestAppObj /> */}
+      </Main>
+    </>
+  );
+}
+
+export default HomeDom;
+
+{
+  /* {clicked ? (
             <>
               <H1>Ingredients and Measurements</H1>
               <Para>
@@ -210,77 +395,5 @@ const ImageItem = ({ item, index }) => {
                 {item.strIngredient12} {item.strMeasure12}
               </Para>
             </>
-          ) : null}
-
-          {clicked ? (
-            <>
-              <H1>Instructions</H1>
-              <Para>{item.strInstructions}</Para>
-            </>
-          ) : null}
-        </div>
-        <Image
-          // onClick={() => setClicked((state) => !state)}
-          // style={{ transform, backgroundImage: `url(${item})`}}
-          style={{ transform, backgroundImage: `url(${item.strMealThumb})` }}
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
-        >
-          <Cover style={{ opacity }} />
-        </Image>
-
-        <Trail text={item.strMeal} visible={hovered} />
-      </Content>
-    </>
-  );
-};
-
-// ----------------------------------------------------
-
-//
-//
-//
-//
-// ##########
-
-// const [query, setQuery] = useState([]);
-function HomeDom() {
-  const recipeData = useRecipeStore((state) => state.recipeData);
-  if (recipeData.meals === null) {
-    recipeData.meals = [
-      {
-        strMeal: "Sorry, We don't have the Recipe.",
-        strMealThumb: "https://i.ytimg.com/vi/u8_ICkj9l9M/maxresdefault.jpg",
-      },
-      {
-        strMeal: "Sorry, We don't have the Recipe.",
-        strMealThumb: "https://i.ytimg.com/vi/u8_ICkj9l9M/maxresdefault.jpg",
-      },
-      {
-        strMeal: "Sorry, We don't have the Recipe.",
-        strMealThumb: "https://i.ytimg.com/vi/u8_ICkj9l9M/maxresdefault.jpg",
-      },
-      {
-        strMeal: "Sorry, We don't have the Recipe.",
-        strMealThumb: "https://i.ytimg.com/vi/u8_ICkj9l9M/maxresdefault.jpg",
-      },
-    ];
-    console.log("@@@the object is empty", recipeData.meals);
-  }
-
-  console.log("This is the RecipeData.meals from HomeDOM", recipeData.meals);
-
-  return (
-    <>
-      <Main>
-        {/* <InfiniteSlider items={recipeData.meals} width={700} visible={4}>
-          {(item, index) => <ImageItem item={item} index={index} />}
-        </InfiniteSlider> */}
-        {/* <Card/> */}
-        <TestAppObj />
-      </Main>
-    </>
-  );
+          ) : null} */
 }
-
-export default HomeDom;

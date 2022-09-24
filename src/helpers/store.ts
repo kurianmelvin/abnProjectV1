@@ -56,7 +56,7 @@ export const useStore = create<AppState>()(
 // }));
 
 //--------
-/*prettier-ignore*/
+
 export const useRecipeStore = create((set) => {
   return {
     recipeName: [],
@@ -67,22 +67,20 @@ export const useRecipeStore = create((set) => {
     recipeYoutube: [],
     recipeData: { meals: [] },
     fetchRecipeData: async (searchTerm) => {
-
       try {
         const result = await axios.get(
-        `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`
-      );
-      set({ recipeData: result.data});
+          `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`
+        );
+        set({ recipeData: result.data });
       } catch (error) {
         console.log(error.data);
         console.log(error.status);
         console.log(error.headers);
       }
-      
-      
     },
   };
 });
+
 // console.log("recipeData from the STORE -###-AFTER SET-###-", recipeData);
 
 // export const restaurantsTransform = ({ results = [] }) => {

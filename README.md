@@ -1,5 +1,6 @@
 # r3f
-React Three Fiber (R3F) with NextJS 
+
+React Three Fiber (R3F) with NextJS
 
 ## Features
 
@@ -13,10 +14,10 @@ React Three Fiber (R3F) with NextJS
 
 ## Getting Started
 
-1. Clone this repo: 
+1. Clone this repo:
 1. Install dependencies: `yarn`
 1. Run the development server: `yarn dev`
-1. See the site here 👀: http://localhost:3000/
+1. See the site here: http://localhost:3000/
 
 ### Lint and Code Formatting
 
@@ -117,6 +118,6 @@ This project features VSCode snippets for quickly creating R3F components and pa
 - `tsr3fc` - Create R3F mesh (with Typescript)
 - `tsr3fg` - Create R3F group (with Typescript)
 
-
 ## Credits
+
 - [Poimandres](https://github.com/pmndrs/)

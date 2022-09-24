@@ -13,29 +13,16 @@ const Main = styled.div`
 const Content = styled.div`
   width: 100%;
   height: 100%;
-  padding: 70px 50px;
-`;
 
-const Marker = styled.span`
-  color: gold;
-  position: absolute;
-  top: 0px;
-  left: 140px;
-  font-family: monospace;
-`;
-
-const Image = styled(a.div)`
-  width: 100%;
-  height: 100%;
-  border-radius: 45px;
-  background-size: cover;
-  background-position: center center;
+  //  top | right | bottom | left
+  padding: 10% 10% 20% 10%;
 `;
 
 const Container = styled.div`
   position: absolute;
   top: 100px;
   left: 0px;
+
   overflow: hidden;
   cursor: pointer;
   display: flex;
@@ -46,10 +33,12 @@ const Container = styled.div`
 
 const Para = styled.p`
   color: gold;
+  font-size: smaller;
 `;
 
-const H1 = styled.h1`
+const H1 = styled.h2`
   color: gold;
+  padding: 0px;
 `;
 
 const Text = styled(a.div)`
@@ -65,23 +54,15 @@ const Text = styled(a.div)`
     overflow: hidden;
   }
 `;
-const InstText = styled(a.div)`
-  height: 100%;
-  width: 90%;
-  line-height: 100%;
-  padding-left: 2%;
-  padding-top: 2%;
 
-  margin: 1em;
-  color: white;
-  font-size: 100%;
-  // font-weight: 600;
-  will-change: transform, opacity;
-  // overflow: hidden;
-  -webkit-text-stroke: 2px white;
-  & > div {
-    overflow: hidden;
-  }
+const Image = styled(a.div)`
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center center;
+  margin-top 2em;
+  margin-bottom 2em;
 `;
 
 const Cover = styled(a.div)`
@@ -89,8 +70,18 @@ const Cover = styled(a.div)`
   width: 100%;
   height: 100%;
   left: 0;
+  border-radius: 15px;
   top: 0;
   background: black;
+  //  top | right | bottom | left
+  // margin: 10% 10% 20% 10%;
+`;
+const Marker = styled.span`
+  color: gold;
+  position: absolute;
+  top: 0px;
+  left: 140px;
+  font-family: monospace;
 `;
 
 function Trail({ text, visible }) {
@@ -125,11 +116,44 @@ function Trail({ text, visible }) {
 //
 //
 // -----------------
+// --------------------------------------------------------------------------------------------------------------
 
-//
-//
-//
-// -----------
+function TestAppObj() {
+  const employee = {
+    strIngredient: "akeyfoo",
+    strIngredient1: "akeyfoo",
+    strIngredient2: "akeysdfs",
+    strIngredient3: "akeydfdfs",
+    strIngredient4: "akeybsdfar",
+    fdsfe: "basdfsr",
+    algs: "bsdfar",
+    strMeasure1: "1 pound",
+    strMeasure2: "1/4 cup",
+    strMeasure3: "3 cloves",
+    strMeasure4: "1 tin ",
+    strMeasure5: "1/2 teaspoon",
+    strMeasure6: "1/2 teaspoon",
+    Address_Line1: "XXX",
+    Address_Line2: "YYY",
+    Name: "ZZZ",
+  };
+
+  const empKeyText = Object.keys(employee).toString();
+  const matchIngredient = empKeyText.match(/strIngredient[\w-]/g);
+  const matchMeasure = empKeyText.match(/strMeasure[\w-]/g);
+
+  console.log("matchMeasure", matchMeasure);
+  // console.log("employee[matchAddress]", employee[matchAddress[0]]);
+
+  for (let index = 0; index < matchIngredient.length; index++) {
+    console.log(employee[matchIngredient[index]]);
+  }
+
+  for (let index = 0; index < matchMeasure.length; index++) {
+    console.log(employee[matchMeasure[index]]);
+  }
+}
+// --------------------------------------------------------------------------------------------------------------
 
 const ImageItem = ({ item, index }) => {
   // const [flipped, set] = useState(false);
@@ -141,45 +165,60 @@ const ImageItem = ({ item, index }) => {
   });
   const [clicked, setClicked] = useState(false);
   const transform = scale.to((s) => `scale(${s})`);
+
   return (
     <>
       <Content onClick={() => setClicked((state) => !state)}>
-        {/* <Content> */}
-        {clicked ? (
-          <div>
-            <H1>Ingredients:</H1>
-            <Para>
-              {item.strIngredient1} {item.strMeasure1}
-            </Para>
-            <Para>{item.strIngredient2}</Para>
-            <Para>{item.strIngredient3}</Para>
-            <Para>{item.strIngredient4}</Para>
-            <Para>{item.strIngredient5}</Para>
-            <Para>{item.strIngredient6}</Para>
-            <Para>{item.strIngredient7}</Para>
-            <Para>{item.strIngredient8}</Para>
-            <Para>{item.strIngredient9}</Para>
-            <Para>{item.strIngredient10}</Para>
-          </div>
-        ) : null}
+        <div>
+          {clicked ? (
+            <>
+              <H1>Ingredients and Measurements</H1>
+              <Para>
+                {item.strIngredient1} {item.strMeasure1}
+              </Para>
+              <Para>
+                {item.strIngredient2} {item.strMeasure2}
+              </Para>
+              <Para>
+                {item.strIngredient3} {item.strMeasure3}
+              </Para>
+              <Para>
+                {item.strIngredient4} {item.strMeasure4}
+              </Para>
+              <Para>
+                {item.strIngredient5} {item.strMeasure5}
+              </Para>
+              <Para>
+                {item.strIngredient6} {item.strMeasure6}
+              </Para>
+              <Para>
+                {item.strIngredient7} {item.strMeasure7}
+              </Para>
+              <Para>
+                {item.strIngredient8} {item.strMeasure8}
+              </Para>
+              <Para>
+                {item.strIngredient9} {item.strMeasure9}
+              </Para>
+              <Para>
+                {item.strIngredient10} {item.strMeasure10}
+              </Para>
+              <Para>
+                {item.strIngredient11} {item.strMeasure11}
+              </Para>
+              <Para>
+                {item.strIngredient12} {item.strMeasure12}
+              </Para>
+            </>
+          ) : null}
 
-        {clicked ? (
-          <div>
-            <H1>Measures:</H1>
-            <Para>{item.strMeasure1}</Para>
-            <Para>{item.strMeasure2}</Para>
-            <Para>{item.strMeasure3}</Para>
-            <Para>{item.strMeasure4}</Para>
-            <Para>{item.strMeasure5}</Para>
-            <Para>{item.strMeasure6}</Para>
-            <Para>{item.strMeasure7}</Para>
-            <Para>{item.strMeasure8}</Para>
-            <Para>{item.strMeasure9}</Para>
-            <Para>{item.strMeasure10}</Para>
-            <Para>{item.strMeasure11}</Para>
-          </div>
-        ) : null}
-
+          {clicked ? (
+            <>
+              <H1>Instructions</H1>
+              <Para>{item.strInstructions}</Para>
+            </>
+          ) : null}
+        </div>
         <Image
           // onClick={() => setClicked((state) => !state)}
           // style={{ transform, backgroundImage: `url(${item})`}}
@@ -188,9 +227,6 @@ const ImageItem = ({ item, index }) => {
           onMouseLeave={() => setHover(false)}
         >
           <Cover style={{ opacity }} />
-          {clicked ? (
-            <InstText>{`Instructions:   ${item.strInstructions}`}</InstText>
-          ) : null}
         </Image>
 
         <Trail text={item.strMeal} visible={hovered} />
@@ -237,232 +273,14 @@ function HomeDom() {
   return (
     <>
       <Main>
-        <InfiniteSlider items={recipeData.meals} width={700} visible={4}>
+        {/* <InfiniteSlider items={recipeData.meals} width={700} visible={4}>
           {(item, index) => <ImageItem item={item} index={index} />}
-        </InfiniteSlider>
+        </InfiniteSlider> */}
         {/* <Card/> */}
+        <TestAppObj />
       </Main>
     </>
   );
 }
 
 export default HomeDom;
-
-//
-//
-// from HomeDom function
-// const recipeFoodName = [recipeData.meals.map((meals: any) => meals.strMeal)].toString();
-// const recipeFoodImage = [recipeData.meals.map((meals: any) => meals.strMealThumb)].toString();
-//  const imageLinks = useMemo(() => recipeFoodImage.split(","));
-
-// for (let index = 0; index < recipeData.meals.length; index++) {
-//   const element = recipeData.meals[index];
-//   console.log("these are the elements", element);
-// }
-// const recipeFoodName = [recipeData.meals.map((meals: any) => meals.strMeal)];
-// const recipeFoodImage = [recipeData.meals.map((meals: any) => meals.strMealThumb)];
-//
-//
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-// <InfiniteSlider items={recipeData.meals===null? (<p>Sorry, We don't Have that Recipe. Please try another Food or enter a
-// valid Input</p>): (recipeData.meals)} width={700} visible={4}>
-
-// function Card() {
-//   const [flipped, set] = useState(false);
-//   const { flipTransform, opacity } = useSpring({
-//     opacity: flipped ? 1 : 0,
-//     flipTransform: `perspective(600px) rotateX(${flipped ? 180 : 0}deg)`,
-//     config: { mass: 5, tension: 500, friction: 80 },
-//   });
-//   return (
-//     <div onClick={() => set((state) => !state)}>
-//       <a.div
-//         // class="c"
-//         style={{
-//           opacity: opacity.to((o) => 1 - o),
-//           flipTransform,
-//           backgroundImage:
-//             "url(https://www.themealdb.com/images/media/meals/naqyel1608588563.jpg)",
-//           position: "absolute",
-//           maxWidth: "500px",
-//           maxHeight: "500px",
-//           width: "50ch",
-//           height: "50ch",
-
-//           willChange: ("flipTransform", "opacity"),
-//         }}
-//       />
-//       <a.div
-//         style={{
-//           opacity,
-//           backgroundImage:
-//             "url(https://images.unsplash.com/photo-1540206395-68808572332f?ixlib=rb-1.2.1&w=1181&q=80&auto=format&fit=crop)",
-//           backgroundSize: "cover",
-//           transform: flipTransform.to((t) => `${t} rotateX(180deg)`),
-//           position: "absolute",
-//           maxWidth: "500px",
-//           maxHeight: "500px",
-//           width: "50ch",
-//           height: "50ch",
-
-//           willChange: ("flipTransform", "opacity"),
-//         }}
-//       />
-//     </div>
-//   );
-// }
-
-//
-// End of Styled conponents ---------
-//
-
-// function Instructions({ instructions, visible }) {
-//   const words = useMemo(() => instructions.split(" "), [instructions]);
-//   const trailInst = useTrail(words.length, {
-//     opacity: visible ? 1 : 0,
-//     x: visible ? 0 : 20,
-//     height: visible ? 90 : 0,
-//     from: { opacity: 0, x: 20, height: 0 },
-//     config: { tension: 2500, friction: 200 },
-//   });
-
-//   return (
-//     <Container>
-//       <div>
-//         {trailInst.map(({ x, height, ...rest }, index) => (
-//           <InstText
-//             key={words[index]}
-//             style={{
-//               ...rest,
-//               transform: x.to((x) => `translate3d(0,${x}px,0)`),
-//             }}
-//           >
-//             <a.div style={{ height }}>{words[index]}</a.div>
-//           </InstText>
-//         ))}
-//       </div>
-//     </Container>
-//   );
-// }
-
-// from ImageItem Functon
-
-// const [flipped, set] = useState(false);
-// const { flipTransform, nopacity } = useSpring({
-//   nopacity: flipped ? 1 : 0,
-//   flipTransform: `perspective(600px) rotateX(${flipped ? 180 : 0}deg)`,
-//   config: { mass: 5, tension: 500, friction: 80 },
-// });
-// let text = "123456789";
-// let pattern = /[1-4]/g;
-// let result = text.match(pattern)
-{
-  /* <a.div
-        class="c"
-        style={{
-          opacity: opacity.to((o) => 1 - o),
-          flipTransform,
-          // backgroundImage: `url(${item.strMealThumb})`,
-          // position: "absolute",
-          // // maxWidth: "500px",
-          // // maxHeight: "500px",
-          // width: "50ch",
-          // height: "50ch",
-
-          // willChange: ("flipTransform", "opacity"),
-        }}
-      /> */
-}
-{
-  /* <a.div
-      class="c"
-        style={{
-          opacity,
-          // backgroundImage: `url(${item.strMealThumb})`,
-          // backgroundSize: "cover",
-          transform: flipTransform.to((t) => `${t} rotateX(180deg)`),
-          // position: "absolute",
-          // maxWidth: "500px",
-          // maxHeight: "500px",
-          // width: "50ch",
-          // height: "50ch",
-
-          // willChange: ("flipTransform", "opacity"),
-        }}
-      /> */
-}
-// const Main = styled.div`
-//   height: 100vh;
-//   width: 100vw;
-// `;
-
-// const Content = styled.div`
-//   width: 100%;
-//   height: 100%;
-// `;
-
-// const Marker = styled.span`
-//   color: white;
-//   position: absolute;
-//   top: 0px;
-//   left: 140px;
-//   font-family: monospace;
-// `;
-
-// const Image = styled(a.div)`
-//   width: 100%;
-//   height: 100%;
-//   background-size: cover;
-//   background-position: center center;
-// `;
-
-// const Container = styled.div`
-//   position: absolute;
-//   top: 100px;
-//   left: 0px;
-//   overflow: hidden;
-//   cursor: pointer;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   pointer-events: none;
-// `;
-
-// const Text = styled(a.div)`
-//   height: 90px;
-//   line-height: 90px;
-//   color: transparent;
-//   font-size: 7em;
-//   font-weight: 600;
-//   will-change: transform, opacity;
-//   overflow: hidden;
-//   -webkit-text-stroke: 2px white;
-//   & > div {
-//     overflow: hidden;
-//   }
-// `;
-
-// const Main = styled.div`
-//   height: 400px;
-// `;
-
-//
-//
-//
-// `url(https://www.themealdb.com/images/media/meals/naqyel1608588563.jpg)`

@@ -2,14 +2,13 @@
 import React, { useState, useEffect } from "react";
 import { useRecipeStore } from "@/helpers/store";
 import styled from "styled-components";
-/*prettier-ignore */
 
 const SearchHome = styled.div`
-position: relative;
-display: inline-block;
-width: 100%;
-padding-top:20px;
-`
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  padding-top: 20px;
+`;
 
 const Input = styled.input`
   height: 75px;
@@ -27,11 +26,9 @@ const Input = styled.input`
 `;
 
 function RecipeAPI() {
-  // const [searchTerm, setSearchTerm] = useState("Breakfast");
-
   const fetchRecipeData = useRecipeStore((state) => state.fetchRecipeData);
-  const [query, setQuery] = useState("Arrabiata");
-  // const [query, setQuery] = useState("breakfast");
+  // const [query, setQuery] = useState("Arrabiata");
+  const [query, setQuery] = useState("breakfast");
 
   useEffect(() => {
     try {
@@ -41,8 +38,6 @@ function RecipeAPI() {
     }
   }, [query]);
 
-  // console.log(recipeData);
-  // console.log("this is  from RecipeAPI.MEALS ", recipeData.meals);
   return (
     <>
       <SearchHome>
@@ -59,12 +54,3 @@ function RecipeAPI() {
 }
 
 export default RecipeAPI;
-
-{
-  /* <input
-          type="search"
-          placeholder="Search for Recipes"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        /> */
-}

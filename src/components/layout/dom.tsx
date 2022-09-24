@@ -4,9 +4,6 @@ import useStore from "@/helpers/store";
 
 const Dom = ({ children }) => {
   const ref = useRef(null);
-  // useEffect(() => {
-  //   useStore.setState({ dom: ref })
-  // }, [])
 
   return (
     <div

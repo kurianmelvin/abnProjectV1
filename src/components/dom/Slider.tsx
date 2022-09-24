@@ -73,7 +73,7 @@ export default function InfiniteSlider({items,width = 600,visible = 4, style, ch
   // --------------
   return (
     <>
-      {/* <div {...bind()} style={{ ...style, ...styles.container }}> */}
+
       <div ref={target} style={{ ...style, ...styles.container }}>
       {springs.map(({ x }, i) => (
         <a.div key={i} style={{ ...styles.item, width, x }} children={children(items[i], i)} />
@@ -82,5 +82,3 @@ export default function InfiniteSlider({items,width = 600,visible = 4, style, ch
     </>
   );
 }
-
-// const [springs, api] = useSprings((items.length == 0 ? (<p>sorry something went wrong</p>) : (items.length)), i => ({ x: (i < items.length - 1 ? i : -1) * width }))

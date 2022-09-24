@@ -29,9 +29,8 @@ export const useStore = create<AppState>()(
       setRouter: (router) => set((state) => ({ ...state, router })),
 
       // Add any default values for app-wide state here
-      // e.g. game start logic, points/score, etc
-      // gameStarted: true,
-      // points: 100,
+     
+      
     })
 
     // END: Optional persist
@@ -39,32 +38,12 @@ export const useStore = create<AppState>()(
   )
 );
 
-// export const getRecipe = create((set) => ({
-//   recipeName: [],
-//   recipeInstructions: [],
-//   recipeImage: [],
-//   recipeIngredient: [],
-//   recipeMeasure: [],
-//   recipeYoutube: [],
-
-//   setRecipeName: (meals: any) => set({ recipeName: meals }),
-//   setRecipeInstructions: (meals: any) => set({ recipeInstructions: meals }),
-//   setRecipeImage: (meals: any) => set({ recipeImage: meals }),
-//   setRecipeIngredient: (meals: any) => set({ recipeIngredient: meals }),
-//   setRecipeMeasure: (meals: any) => set({ recipeMeasure: meals }),
-//   setRecipeYoutube: (meals: any) => set({ recipeYoutube: meals }),
-// }));
 
 //--------
 
 export const useRecipeStore = create((set) => {
   return {
-    recipeName: [],
-    recipeInstructions: [],
-    recipeImage: [],
-    recipeIngredient: [],
-    recipeMeasure: [],
-    recipeYoutube: [],
+
     recipeData: { meals: [] },
     fetchRecipeData: async (searchTerm) => {
       try {
@@ -81,21 +60,5 @@ export const useRecipeStore = create((set) => {
   };
 });
 
-// console.log("recipeData from the STORE -###-AFTER SET-###-", recipeData);
-
-// export const restaurantsTransform = ({ results = [] }) => {
-//   const mappedResults = results.map((restaurant) => {
-//     // restaurant.photos = restaurant.photos.map((p) => {
-//     //   return mockImages[Math.ceil(Math.random() * (mockImages.length - 1))];
-//     // });
-
-//     return {
-//       ...restaurant,
-//       address: restaurant.vicinity,
-//       isOpenNow: restaurant.opening_hours && restaurant.opening_hours.open_now,
-//       isClosedTemporarily: restaurant.business_status === "CLOSED_TEMPORARILY",
-//     };
-//   });
-// };
 
 export default useStore;

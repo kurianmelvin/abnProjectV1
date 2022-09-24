@@ -144,12 +144,20 @@ const ImageItem = ({ item, indexd }) => {
   let ingAsdf = [];
   let meaAsdf = [];
   // let allItems = new Object();
-  for (let index = 0; index < matchIngredient.length; index++) {
-    ingAsdf[index] = [itemIng[matchIngredient[index]]];
+  try {
+    for (let index = 0; index < matchIngredient.length; index++) {
+      ingAsdf[index] = [itemIng[matchIngredient[index]]];
+    }
+  } catch (error) {
+    console.log(error);
   }
 
-  for (let indexj = 0; indexj < matchMeasure.length; indexj++) {
-    meaAsdf[indexj] = [itemIng[matchMeasure[indexj]]];
+  try {
+    for (let indexj = 0; indexj < matchMeasure.length; indexj++) {
+      meaAsdf[indexj] = [itemIng[matchMeasure[indexj]]];
+    }
+  } catch (error) {
+    console.log(error);
   }
 
   var armixed = ingAsdf.map(function (x, i) {
